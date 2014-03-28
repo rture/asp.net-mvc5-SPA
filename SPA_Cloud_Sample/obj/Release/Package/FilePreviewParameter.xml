@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="myco" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Administrator\\Documents\\Visual\ Studio\ 2013\\Projects\\SPA_Cloud_Sample\\SPA_Cloud_Sample\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Administrator\\Documents\\Visual\ Studio\ 2013\\Projects\\SPA_Cloud_Sample\\SPA_Cloud_Sample\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="ContactManagerContext-Web.config Connection String" description="" value="data source=tcp:pi21hcg7m8.database.windows.net,1433;initial catalog=contactDB;user id=contactmanageradmin@pi21hcg7m8;password=Pass@word1;MultipleActiveResultSets=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrator\\Documents\\Visual\ Studio\ 2013\\Projects\\SPA_Cloud_Sample\\SPA_Cloud_Sample\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ContactManagerContext']/@connectionString" />
+  </parameter>
+  <parameter name="SPA_Cloud_SampleContext-Web.config Connection String" description="" value="Data Source=tcp:pi21hcg7m8.database.windows.net,1433;Initial Catalog=contactDB;User Id=contactmanageradmin@pi21hcg7m8;Password=Pass@word1" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrator\\Documents\\Visual\ Studio\ 2013\\Projects\\SPA_Cloud_Sample\\SPA_Cloud_Sample\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SPA_Cloud_SampleContext']/@connectionString" />
+  </parameter>
+</parameters>

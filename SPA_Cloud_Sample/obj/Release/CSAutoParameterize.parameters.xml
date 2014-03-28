@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ContactManagerContext-Web.config Connection String" description="ContactManagerContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\v11.0; Initial Catalog=ContactManagerContext-20140317133115; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|ContactManagerContext-20140317133115.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrator\\Documents\\Visual\ Studio\ 2013\\Projects\\SPA_Cloud_Sample\\SPA_Cloud_Sample\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ContactManagerContext']/@connectionString" />
+  </parameter>
+  <parameter name="SPA_Cloud_SampleContext-Web.config Connection String" description="SPA_Cloud_SampleContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\v11.0; Initial Catalog=SPA_Cloud_SampleContext-20140317133151; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|SPA_Cloud_SampleContext-20140317133151.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrator\\Documents\\Visual\ Studio\ 2013\\Projects\\SPA_Cloud_Sample\\SPA_Cloud_Sample\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SPA_Cloud_SampleContext']/@connectionString" />
+  </parameter>
+</parameters>
