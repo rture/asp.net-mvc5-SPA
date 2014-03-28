@@ -7,15 +7,20 @@
     @Scripts.Render("~/bundles/knockout")
 
     <script type="text/javascript">
-        $(document).ready(function () {
+       
            
-            $(document).ajaxStart(function () {
-                $("#wait").show();
+
+            $.ajaxSetup({
+                beforeSend: function () {
+                    $("#wait").show();
+                },
+                complete: function () {
+                    $("#wait").hide();
+                }
             });
-            $(document).ajaxComplete(function () {
-                $("#wait").hide();
-            });
-        });
+
+          
+       
 
         @functions{
            public string TokenHeaderValue()
@@ -27,6 +32,7 @@
         }
 
         function ContactsViewModel() {
+           // $("#wait").show();
             var self = this;
             self.contacts = ko.observableArray([]);
             self.addContact = function () {
@@ -38,6 +44,7 @@
                     dataType: "json",
                     success: function (value) {
                         self.contacts.push(value);
+                        $('#myModal').modal('hide')
 
                     },
                     headers: {
@@ -51,6 +58,7 @@
                     url: contact.Self,
                     success: function () {
                         self.contacts.remove(contact);
+                      
                     },
                     headers: {
                         'RequestVerificationToken': '@TokenHeaderValue()'
@@ -64,7 +72,6 @@
                 dataType: "json",
                 success: function (data) {
                     self.contacts(data);
-
                 }
             });
 
@@ -73,9 +80,9 @@
    </script>
 }
 
-<img id="wait" style="position: absolute; top: 50%; left: 50%; padding: 2px; display:none" src="~/Content/Images/ajax-load.gif" />
-   
-<div style="margin-top:45px;" class="panel panel-default">
+<br />
+<img id="wait" style="display:none; float:left;" src="~/Content/Images/ajax-load.gif" />
+<div style="margin-top:25px;" class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">My Contacts</h3>
     </div>

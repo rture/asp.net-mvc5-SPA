@@ -25,6 +25,7 @@ namespace SPA_Cloud_Sample.Controllers
         [ResponseType(typeof(Contact))]
         public async Task<IEnumerable<Contact>> GetContacts()
         {
+            Task.Delay(2000);
             return await _repository.GetAll();
         }
 

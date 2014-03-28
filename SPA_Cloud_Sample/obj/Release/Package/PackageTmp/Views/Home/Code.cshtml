@@ -1,171 +1,21 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Code";
 }
 
-<h2>Code</h2>
 
 
-<h3>
-    REST web api controllers
-</h3>
-<pre>
-    <code>
-    @ViewBag.controller
-</code>
-</pre>
-
-<h3>
-    Data Repository class
-</h3>
-<pre>
-<code>
-    @ViewBag.repo
-</code>
-</pre>
+<div style="margin-top:45px;" class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Source code for this project</h3>
+    </div>
+    <div class="panel-body">
+       
+        <a href="https://github.com/rture/asp.net-mvc5-SPA">https://github.com/rture/asp.net-mvc5-SPA</a>
+</div>
+    </div>
 
 
-<h3>
-    UI 
-</h3>
-<pre>
-<code>
-     
-section Scripts1 {
-    Scripts.Render(&quot;~/bundles/knockout&quot;)
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        $(function () { $(&quot;input,select,textarea&quot;).not(&quot;[type=submit]&quot;).jqBootstrapValidation(); });
-        functions{
-           public string TokenHeaderValue()
-           {
-              string cookieToken, formToken;
-              AntiForgery.GetTokens(null, out cookieToken, out formToken);
-              return cookieToken + &quot;:&quot; + formToken;
-           }
-        }
-        function ContactsViewModel() {
-            var self = this;
-            self.contacts = ko.observableArray([]);
-            self.addContact = function () {
-                $.ajax({
-                    type: &quot;post&quot;,
-                    url: &quot;api/contacts&quot;,
-                    data: $(&quot;#addContact&quot;).serialize(),
-                    dataType: &quot;json&quot;,
-                    success: function (value) {
-                        self.contacts.push(value);
-                    },
-                    headers: {
-                        &#39;RequestVerificationToken&#39;: &#39;TokenHeaderValue()&#39;
-                    }
-                });
-            }
-            self.removeContact = function (contact) {
-                $.ajax({
-                    type: &quot;DELETE&quot;,
-                    url: contact.Self,
-                    success: function () {
-                        self.contacts.remove(contact);
-                    },
-                    headers: {
-                        &#39;RequestVerificationToken&#39;: &#39;TokenHeaderValue()&#39;
-                    }
-                });
-            }
-            $.getJSON(&quot;api/contacts&quot;, function (data) {
-                self.contacts(data);
-            });
-        }
-        ko.applyBindings(new ContactsViewModel());
-    &lt;/script&gt;
-}
-&lt;ul id=&quot;contacts&quot; data-bind=&quot;foreach: contacts&quot;&gt;
-    &lt;li class=&quot;ui-widget-content ui-corner-all&quot;&gt;
-        &lt;h1 data-bind=&quot;text: Name&quot; class=&quot;ui-widget-header&quot;&gt;&lt;/h1&gt;
-        &lt;div&gt;&lt;span data-bind=&quot;text: $data.Address || &#39;Address?&#39;&quot;&gt;&lt;/span&gt;&lt;/div&gt;
-        &lt;div&gt;
-            &lt;span data-bind=&quot;text: $data.City || &#39;City?&#39;&quot;&gt;&lt;/span&gt;,
-            &lt;span data-bind=&quot;text: $data.State || &#39;State?&#39;&quot;&gt;&lt;/span&gt;
-            &lt;span data-bind=&quot;text: $data.Zip || &#39;Zip?&#39;&quot;&gt;&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;div data-bind=&quot;if: $data.Email&quot;&gt;&lt;a data-bind=&quot;attr: { href: &#39;mailto:&#39; + Email }, text: Email&quot;&gt;&lt;/a&gt;&lt;/div&gt;
-        &lt;div data-bind=&quot;ifnot: $data.Email&quot;&gt;&lt;span&gt;Email?&lt;/span&gt;&lt;/div&gt;
-        &lt;div data-bind=&quot;if: $data.Twitter&quot;&gt;&lt;a data-bind=&quot;attr: { href: &#39;http://twitter.com/&#39; + Twitter }, text: &#39;@@&#39; + Twitter&quot;&gt;&lt;/a&gt;&lt;/div&gt;
-        &lt;div data-bind=&quot;ifnot: $data.Twitter&quot;&gt;&lt;span&gt;Twitter?&lt;/span&gt;&lt;/div&gt;
-        &lt;p&gt;&lt;a data-bind=&quot;attr: { href: Self }, click: $root.removeContact&quot; class=&quot;removeContact ui-state-default ui-corner-all&quot;&gt;Remove&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;form class=&quot;form-horizontal&quot; id=&quot;addContact&quot; role=&quot;form&quot; data-bind=&quot;submit: addContact&quot;&gt;
-    &lt;fieldset&gt;
-        &lt;legend&gt;Add New Contact&lt;/legend&gt;
-        &lt;ol&gt;
-            &lt;li&gt;
-                &lt;div class=&quot;control-group&quot;&gt;
-                    &lt;label class=&quot;control-label&quot;&gt;Name&lt;/label&gt;
-                    &lt;div class=&quot;controls&quot;&gt;
-                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;Name&quot; required&gt;
-                        &lt;p class=&quot;help-block&quot;&gt;&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/li&gt;
-            &lt;li&gt;
-                &lt;div class=&quot;control-group&quot;&gt;
-                    &lt;label class=&quot;control-label&quot;&gt;Address&lt;/label&gt;
-                    &lt;div class=&quot;controls&quot;&gt;
-                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;Address&quot; required&gt;
-                        &lt;p class=&quot;help-block&quot;&gt;&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/li&gt;
-            &lt;li&gt;
-                &lt;div class=&quot;control-group&quot;&gt;
-                    &lt;label class=&quot;control-label&quot;&gt;City&lt;/label&gt;
-                    &lt;div class=&quot;controls&quot;&gt;
-                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;City&quot; required&gt;
-                        &lt;p class=&quot;help-block&quot;&gt;&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/li&gt;
-            &lt;li&gt;
-                &lt;div class=&quot;control-group&quot;&gt;
-                    &lt;label class=&quot;control-label&quot;&gt;State&lt;/label&gt;
-                    &lt;div class=&quot;controls&quot;&gt;
-                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;State&quot; required&gt;
-                        &lt;p class=&quot;help-block&quot;&gt;&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/li&gt;
-            &lt;li&gt;
-                &lt;div class=&quot;control-group&quot;&gt;
-                    &lt;label class=&quot;control-label&quot;&gt;Zip&lt;/label&gt;
-                    &lt;div class=&quot;controls&quot;&gt;
-                        &lt;input type=&quot;number&quot; class=&quot;form-control&quot; name=&quot;Zip&quot; /&gt;
-                        &lt;p class=&quot;help-block&quot;&gt;&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/li&gt;
-            &lt;li&gt;
-                &lt;div class=&quot;control-group&quot;&gt;
-                    &lt;label class=&quot;control-label&quot;&gt;Email&lt;/label&gt;
-                    &lt;div class=&quot;controls&quot;&gt;
-                        &lt;input type=&quot;email&quot; class=&quot;form-control&quot; name=&quot;Email&quot; /&gt;
-                        &lt;p class=&quot;help-block&quot;&gt;&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/li&gt;
-            &lt;li&gt;
-                &lt;div class=&quot;control-group&quot;&gt;
-                    &lt;label class=&quot;control-label&quot;&gt;Twitter&lt;/label&gt;
-                    &lt;div class=&quot;controls&quot;&gt;
-                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;Twitter&quot; /&gt;
-                        &lt;p class=&quot;help-block&quot;&gt;&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/li&gt;
-        &lt;/ol&gt;
-        &lt;input type=&quot;submit&quot; class=&quot;btn btn-primary&quot; value=&quot;Add&quot; /&gt;
-    &lt;/fieldset&gt;
-&lt;/form&gt;
-</code>
-</pre>
+
+
+
 

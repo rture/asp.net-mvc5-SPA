@@ -39,3 +39,4 @@ C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SPA_Cloud_Sample\SP
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SPA_Cloud_Sample\SPA_Cloud_Sample\bin\Microsoft.Practices.Unity.dll
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SPA_Cloud_Sample\SPA_Cloud_Sample\bin\Microsoft.Practices.Unity.xml
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SPA_Cloud_Sample\SPA_Cloud_Sample\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SPA_Cloud_Sample\SPA_Cloud_Sample\obj\Release\SPA_Cloud_Sample.csprojResolveAssemblyReference.cache
